@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adubos e Adubação — Guia Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060f08;
+  --bg2: #0d1f12;
+  --bg3: #142b1a;
+  --green1: #1a4228;
+  --green2: #2d6a4f;
+  --green3: #40916c;
+  --green4: #52b788;
+  --green5: #74c69d;
+  --green6: #95d5b2;
+  --text: #d8f3dc;
+  --text2: #b7e4c7;
+  --text3: #95d5b2;
+  --gold: #ffd166;
+  --red: #ff6b6b;
+  --blue: #74b3ce;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);
+  font-family:'Source Serif 4',Georgia,serif;
+  color:var(--text);
+  min-height:100vh;
+  padding-bottom:60px;
+}
+/* HEADER */
+.site-header{
+  background:linear-gradient(180deg,rgba(0,0,0,0.7) 0%,rgba(6,15,8,0.95) 100%);
+  border-bottom:1px solid rgba(116,198,157,0.25);
+  padding:18px 20px 14px;
+  text-align:center;
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(10px);
+}
+.site-header .tag{font-size:10px;letter-spacing:5px;color:var(--green5);text-transform:uppercase;margin-bottom:4px;}
+.site-header h1{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--text);line-height:1.2;}
+.site-header .sub{font-size:11px;color:var(--green6);margin-top:3px;font-style:italic;}
+
+/* NAV */
+nav{
+  display:flex;background:rgba(0,0,0,0.5);
+  border-bottom:1px solid rgba(116,198,157,0.15);
+  overflow-x:auto;scrollbar-width:none;
+}
+nav::-webkit-scrollbar{display:none;}
+nav button{
+  flex:0 0 auto;padding:10px 14px;border:none;cursor:pointer;
+  background:transparent;color:var(--text3);
+  font-size:10px;font-family:'Source Serif 4',serif;
+  border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;
+}
+nav button.active{background:rgba(116,198,157,0.15);color:var(--green5);border-bottom:2px solid var(--green5);}
+nav button .ni{font-size:16px;display:block;margin-bottom:2px;}
+
+.wrap{padding:18px 14px;max-width:680px;margin:0 auto;}
+.tab{display:none;}.tab.active{display:block;}
+
+/* SECTION TITLE */
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:20px;color:var(--green5);
+  margin-bottom:18px;padding-bottom:8px;
+  border-bottom:1px solid rgba(116,198,157,0.2);
+}
+.sec-sub{font-size:12px;color:var(--text3);margin-top:2px;font-weight:300;}
+
+/* CARDS */
+.card{
+  background:rgba(116,198,157,0.05);
+  border:1px solid rgba(116,198,157,0.18);
+  border-radius:14px;padding:16px;margin-bottom:14px;
+}
+.card.accent-gold{border-left:4px solid var(--gold);}
+.card.accent-red{border-left:4px solid var(--red);}
+.card.accent-blue{border-left:4px solid var(--blue);}
+.card.accent-green{border-left:4px solid var(--green4);}
+.card-title{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Playfair Display',serif;
+  color:var(--green5);font-size:15px;margin-bottom:12px;
+}
+.card-title .ico{font-size:18px;}
+.row{
+  display:flex;justify-content:space-between;
+  padding:6px 0;border-bottom:1px solid rgba(116,198,157,0.08);
+  font-size:13px;gap:10px;flex-wrap:wrap;
+}
+.row:last-child{border-bottom:none;}
+.row .lbl{color:var(--text3);}
+.row .val{color:var(--text);font-weight:600;text-align:right;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:10px 0;}
+.tbl th{background:rgba(116,198,157,0.15);color:var(--green5);padding:8px 10px;text-align:left;font-family:'Playfair Display',serif;font-weight:700;}
+.tbl td{padding:7px 10px;border-bottom:1px solid rgba(116,198,157,0.08);color:var(--text2);}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:rgba(116,198,157,0.05);}
+
+/* BADGE */
+.badge{
+  display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;margin:2px;
+}
+.badge.macro{background:rgba(116,198,157,0.2);color:var(--green5);border:1px solid rgba(116,198,157,0.3);}
+.badge.micro{background:rgba(116,179,206,0.2);color:var(--blue);border:1px solid rgba(116,179,206,0.3);}
+.badge.warn{background:rgba(255,209,102,0.15);color:var(--gold);border:1px solid rgba(255,209,102,0.3);}
+.badge.danger{background:rgba(255,107,107,0.15);color:var(--red);border:1px solid rgba(255,107,107,0.3);}
+
+/* INFO BOX */
+.info-box{
+  background:rgba(116,198,157,0.07);
+  border:1px solid rgba(116,198,157,0.2);
+  border-radius:10px;padding:12px 14px;margin:10px 0;
+  font-size:13px;line-height:1.7;color:var(--text2);
+}
+.info-box.gold{background:rgba(255,209,102,0.07);border-color:rgba(255,209,102,0.2);}
+.info-box.red{background:rgba(255,107,107,0.07);border-color:rgba(255,107,107,0.2);}
+.info-box .label{font-weight:700;color:var(--green5);margin-bottom:4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;}
+.info-box.gold .label{color:var(--gold);}
+.info-box.red .label{color:var(--red);}
+
+/* FLASHCARD */
+.flashcard{
+  background:linear-gradient(135deg,rgba(27,67,50,.6),rgba(45,106,79,.3));
+  border:2px solid rgba(116,198,157,.3);
+  border-radius:18px;padding:30px 24px;
+  min-height:190px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  cursor:pointer;text-align:center;transition:all .3s;margin-bottom:18px;
+}
+.flashcard.flipped{background:linear-gradient(135deg,rgba(82,183,136,.2),rgba(45,106,79,.3));border-color:var(--green4);}
+.flashcard .fc-lbl{font-size:10px;letter-spacing:4px;color:var(--green5);margin-bottom:14px;text-transform:uppercase;}
+.flashcard.flipped .fc-lbl{color:var(--green4);}
+.flashcard .fc-txt{font-size:15px;line-height:1.8;color:var(--text);white-space:pre-line;}
+.fc-nav{display:flex;gap:10px;margin-bottom:10px;}
+.fc-nav button{flex:1;}
+.progress-bar{background:rgba(255,255,255,.08);border-radius:4px;height:4px;margin-bottom:18px;}
+.progress-fill{height:4px;border-radius:4px;background:var(--green5);transition:width .3s;}
+
+/* QUIZ */
+.quiz-q{
+  background:rgba(116,198,157,.07);border:1px solid rgba(116,198,157,.18);
+  border-radius:14px;padding:18px;margin-bottom:14px;
+  font-size:15px;line-height:1.65;color:var(--text);
+}
+.quiz-opts{display:flex;flex-direction:column;gap:9px;margin-bottom:14px;}
+.quiz-opt{
+  padding:12px 16px;background:rgba(116,198,157,.05);
+  border:1px solid rgba(116,198,157,.18);border-radius:10px;
+  color:var(--text);cursor:pointer;text-align:left;
+  font-size:13.5px;font-family:'Source Serif 4',serif;
+  line-height:1.4;transition:all .2s;width:100%;
+}
+.quiz-opt:hover{background:rgba(116,198,157,.1);}
+.quiz-opt.correct{background:rgba(82,183,136,.2);border-color:var(--green4);color:var(--green5);}
+.quiz-opt.wrong{background:rgba(255,107,107,.15);border-color:rgba(255,107,107,.5);color:var(--red);}
+.quiz-exp{
+  background:rgba(116,198,157,.07);border:1px solid rgba(116,198,157,.2);
+  border-radius:12px;padding:14px;margin-bottom:14px;
+  font-size:13px;color:var(--text3);line-height:1.7;
+}
+.quiz-exp strong{color:var(--green5);}
+.quiz-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:13px;}
+
+/* RESULT */
+.result-box{
+  background:rgba(116,198,157,.08);border:1px solid rgba(116,198,157,.25);
+  border-radius:18px;padding:30px 20px;margin-bottom:20px;text-align:center;
+}
+.result-score{font-family:'Playfair Display',serif;font-size:42px;color:var(--green5);}
+.result-msg{font-size:14px;color:var(--text3);margin-top:6px;}
+
+/* BTN */
+.btn{
+  width:100%;padding:13px;border-radius:12px;cursor:pointer;
+  font-size:14px;font-family:'Source Serif 4',serif;border:none;transition:all .2s;
+  display:block;
+}
+.btn+.btn{margin-top:8px;}
+.btn-primary{background:rgba(116,198,157,.2);border:1px solid var(--green5);color:var(--green5);}
+.btn-secondary{background:rgba(116,198,157,.07);border:1px solid rgba(116,198,157,.25);color:var(--text3);}
+.btn-ghost{background:transparent;border:1px dashed rgba(116,198,157,.25);color:var(--text3);}
+
+/* HOME */
+.home-hero{
+  background:linear-gradient(135deg,rgba(116,198,157,.08),rgba(45,106,79,.15));
+  border:1px solid rgba(116,198,157,.25);
+  border-radius:18px;padding:22px;margin-bottom:20px;text-align:center;
+}
+.home-hero h2{font-family:'Playfair Display',serif;color:var(--green5);font-size:20px;margin-bottom:8px;}
+.home-hero p{font-size:13.5px;color:var(--text3);line-height:1.7;}
+.home-btn{
+  background:rgba(116,198,157,.06);border:1px solid rgba(116,198,157,.2);
+  border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;
+  cursor:pointer;text-align:left;width:100%;margin-bottom:10px;
+  font-family:'Source Serif 4',serif;transition:all .2s;
+}
+.home-btn:hover{background:rgba(116,198,157,.12);}
+.home-btn .hico{font-size:30px;}
+.home-btn .htitle{color:var(--green5);font-weight:700;font-size:15px;display:block;}
+.home-btn .hdesc{color:var(--text3);font-size:12.5px;margin-top:2px;display:block;}
+.home-btn .harrow{margin-left:auto;color:var(--green4);font-size:22px;}
+.warn-box{background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.2);border-radius:12px;padding:14px;margin-top:4px;}
+.warn-box .wt{font-size:13px;color:var(--gold);font-weight:700;margin-bottom:6px;}
+.warn-box .wc{font-size:13px;color:var(--text3);line-height:1.6;}
+
+/* PILLS */
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+
+/* TOPIC NAV */
+.topic-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;}
+.topic-btn{
+  padding:6px 12px;border-radius:20px;font-size:12px;cursor:pointer;
+  background:rgba(116,198,157,.08);border:1px solid rgba(116,198,157,.2);
+  color:var(--text3);font-family:'Source Serif 4',serif;transition:all .2s;
+}
+.topic-btn.active{background:rgba(116,198,157,.2);border-color:var(--green5);color:var(--green5);}
+
+.topic-section{display:none;}.topic-section.active{display:block;}
+
+h3{font-family:'Playfair Display',serif;color:var(--green5);font-size:16px;margin:18px 0 10px;}
+h4{color:var(--green6);font-size:14px;margin:12px 0 6px;}
+p{font-size:13.5px;line-height:1.75;color:var(--text2);margin-bottom:8px;}
+ul{padding-left:18px;margin-bottom:8px;}
+ul li{font-size:13.5px;line-height:1.75;color:var(--text2);margin-bottom:3px;}
+strong{color:var(--text);}
+
+/* QUIZ CATEGORY SELECTOR */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;}
+.cat-btn{
+  padding:12px 10px;border-radius:12px;cursor:pointer;text-align:center;
+  background:rgba(116,198,157,.07);border:1px solid rgba(116,198,157,.2);
+  color:var(--text3);font-family:'Source Serif 4',serif;font-size:12px;
+  transition:all .2s;
+}
+.cat-btn:hover,.cat-btn.selected{background:rgba(116,198,157,.18);border-color:var(--green5);color:var(--green5);}
+.cat-btn .cico{font-size:22px;display:block;margin-bottom:4px;}
+
+/* FORMULA BOX */
+.formula{
+  background:rgba(0,0,0,.3);border:1px solid rgba(116,198,157,.2);
+  border-radius:10px;padding:12px 16px;margin:10px 0;
+  font-family:monospace;font-size:14px;color:var(--green5);
+  text-align:center;letter-spacing:1px;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="tag">WYD6652 · ARAÇATUBA · UNITOLEDO</div>
+  <h1>Adubos e Adubação</h1>
+  <div class="sub">Guia Completo — Dr. em Fertilidade do Solo</div>
+</header>
+
+<nav>
+  <button class="active" onclick="showTab('home',this)"><span class="ni">🏠</span>Início</button>
+  <button onclick="showTab('teoria',this)"><span class="ni">📖</span>Teoria</button>
+  <button onclick="showTab('resumo',this)"><span class="ni">📋</span>Resumo</button>
+  <button onclick="showTab('flash',this)"><span class="ni">🃏</span>Flashcards</button>
+  <button onclick="showTab('quiz',this)"><span class="ni">✏️</span>Simulado</button>
+  <button onclick="showTab('tabelas',this)"><span class="ni">📊</span>Tabelas</button>
+</nav>
+
+<div class="wrap">
+
+<!-- ═══════════════════════════════ HOME ═══════════════════════════════ -->
+<div id="tab-home" class="tab active">
+  <div class="home-hero">
+    <div style="font-size:52px;margin-bottom:10px">🌱</div>
+    <h2>Bem-vindo ao Guia Completo</h2>
+    <p>Material elaborado por um Dr. em Fertilidade do Solo. Cobre <strong>100% do conteúdo</strong> da disciplina — da teoria básica às práticas avançadas de adubação.</p>
+  </div>
+  <button class="home-btn" onclick="showTabByName('teoria')">
+    <span class="hico">📖</span>
+    <span><span class="htitle">Teoria Completa</span><span class="hdesc">10 módulos · Nutrientes, solo, calagem, adubação NPK e mais</span></span>
+    <span class="harrow">›</span>
+  </button>
+  <button class="home-btn" onclick="showTabByName('resumo')">
+    <span class="hico">📋</span>
+    <span><span class="htitle">Resumo Rápido</span><span class="hdesc">Tabelas e macetes para revisar rápido antes da prova</span></span>
+    <span class="harrow">›</span>
+  </button>
+  <button class="home-btn" onclick="showTabByName('flash')">
+    <span class="hico">🃏</span>
+    <span><span class="htitle">Flashcards</span><span class="hdesc">30 cards — todos os conceitos essenciais</span></span>
+    <span class="harrow">›</span>
+  </button>
+  <button class="home-btn" onclick="showTabByName('quiz')">
+    <span class="hico">✏️</span>
+    <span><span class="htitle">Simulado Completo</span><span class="hdesc">30 questões divididas por tema</span></span>
+    <span class="harrow">›</span>
+  </button>
+  <button class="home-btn" onclick="showTabByName('tabelas')">
+    <span class="hico">📊</span>
+    <span><span class="htitle">Tabelas de Referência</span><span class="hdesc">Fontes de fertilizantes, doses, interpretação de análise</span></span>
+    <span class="harrow">›</span>
+  </button>
+  <div class="warn-box">
+    <div class="wt">⚠️ Ponto mais cobrado em provas</div>
+    <div class="wc">Para NPK + Ca + S → sempre <strong style="color:var(--green5)">Superfosfato Simples</strong> (P + Ca + S). O Triplo não tem S significativo. Gesso ≠ Calcário: gesso não corrige pH!</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ TEORIA ═══════════════════════════════ -->
+<div id="tab-teoria" class="tab">
+  <div class="sec-title">📖 Teoria Completa
+    <div class="sec-sub">Selecione um módulo para estudar</div>
+  </div>
+
+  <div class="topic-nav">
+    <button class="topic-btn active" onclick="showTopic('t1',this)">1. Nutrientes</button>
+    <button class="topic-btn" onclick="showTopic('t2',this)">2. Solo e CTC</button>
+    <button class="topic-btn" onclick="showTopic('t3',this)">3. Calagem</button>
+    <button class="topic-btn" onclick="showTopic('t4',this)">4. Gessagem</button>
+    <button class="topic-btn" onclick="showTopic('t5',this)">5. Adubação N</button>
+    <button class="topic-btn" onclick="showTopic('t6',this)">6. Adubação P</button>
+    <button class="topic-btn" onclick="showTopic('t7',this)">7. Adubação K</button>
+    <button class="topic-btn" onclick="showTopic('t8',this)">8. Micronutrientes</button>
+    <button class="topic-btn" onclick="showTopic('t9',this)">9. Adubação Foliar</button>
+    <button class="topic-btn" onclick="showTopic('t10',this)">10. Análise de Solo</button>
+  </div>
+
+  <!-- MÓDULO 1 -->
+  <div id="topic-t1" class="topic-section active">
+    <h3>Módulo 1 — Nutrientes Essenciais das Plantas</h3>
+    <p>Para ser considerado <strong>nutriente essencial</strong>, um elemento deve atender a 3 critérios (Arnon & Stout, 1939):</p>
+    <ul>
+      <li>Sua ausência impede o ciclo de vida completo da planta</li>
+      <li>Não pode ser substituído por outro elemento</li>
+      <li>Participa diretamente do metabolismo vegetal</li>
+    </ul>
+
+    <h4>Macronutrientes (6 elementos)</h4>
+    <div class="pill-row">
+      <span class="badge macro">N — Nitrogênio</span>
+      <span class="badge macro">P — Fósforo</span>
+      <span class="badge macro">K — Potássio</span>
+      <span class="badge macro">Ca — Cálcio</span>
+      <span class="badge macro">Mg — Magnésio</span>
+      <span class="badge macro">S — Enxofre</span>
+    </div>
+    <div class="info-box"><div class="label">Macete</div>"<strong>N-P-K Ca-Mg-S</strong>" — os 6 macro. Exigidos em quantidade > 1 g/kg de massa seca.</div>
+
+    <h4>Micronutrientes (8 elementos)</h4>
+    <div class="pill-row">
+      <span class="badge micro">Fe — Ferro</span>
+      <span class="badge micro">Mn — Manganês</span>
+      <span class="badge micro">Zn — Zinco</span>
+      <span class="badge micro">Cu — Cobre</span>
+      <span class="badge micro">B — Boro</span>
+      <span class="badge micro">Mo — Molibdênio</span>
+      <span class="badge micro">Cl — Cloro</span>
+      <span class="badge micro">Ni — Níquel</span>
+    </div>
+    <div class="info-box"><div class="label">Macete</div>Micronutrientes = "<strong>Fe Mn Zn Cu B Mo Cl Ni</strong>". Exigidos em quantidade &lt; 100 mg/kg de massa seca.</div>
+
+    <h4>Funções dos Macronutrientes</h4>
+    <table class="tbl">
+      <tr><th>Nutriente</th><th>Funções Principais</th><th>Deficiência</th></tr>
+      <tr><td><strong>N</strong></td><td>Proteínas, clorofila, ácidos nucleicos, enzimas</td><td>Clorose uniforme nas folhas velhas, nanismo</td></tr>
+      <tr><td><strong>P</strong></td><td>ATP, membranas (fosfolipídios), DNA/RNA, enraizamento</td><td>Cor arroxeada nas folhas, raízes fracas</td></tr>
+      <tr><td><strong>K</strong></td><td>Abertura de estômatos, ativação enzimática, resistência</td><td>Necrose nas bordas das folhas (escorch)</td></tr>
+      <tr><td><strong>Ca</strong></td><td>Parede celular (pectato de cálcio), divisão celular, CTC</td><td>Morte do meristema apical, podridão apical</td></tr>
+      <tr><td><strong>Mg</strong></td><td>Centro da clorofila, ativador enzimático, transporte de P</td><td>Clorose internerval nas folhas velhas</td></tr>
+      <tr><td><strong>S</strong></td><td>Aminoácidos (cisteína, metionina), proteínas, vitaminas</td><td>Clorose nas folhas novas (similar ao N)</td></tr>
+    </table>
+
+    <h4>Mobilidade dos Nutrientes no Floema</h4>
+    <table class="tbl">
+      <tr><th>Mobilidade</th><th>Nutrientes</th><th>Implicação na Adubação Foliar</th></tr>
+      <tr><td>Alta</td><td>N, P, K, Mg, S</td><td>Redistribuem-se pela planta toda</td></tr>
+      <tr><td>Baixa / Imóvel</td><td>Ca, B</td><td>Ficam presos no local aplicado</td></tr>
+      <tr><td>Quase imóvel</td><td>Fe, Zn, Mn, Cu</td><td>Aplicação localizada, sem redistribuição</td></tr>
+    </table>
+    <div class="info-box gold"><div class="label">Atenção — prova!</div>O <strong>fósforo</strong> é móvel no floema (planta), mas <strong>imóvel no solo</strong> (fixado). Leia o contexto da questão!</div>
+  </div>
+
+  <!-- MÓDULO 2 -->
+  <div id="topic-t2" class="topic-section">
+    <h3>Módulo 2 — Solo: CTC, pH e Dinâmica de Nutrientes</h3>
+
+    <h4>Capacidade de Troca de Cátions (CTC)</h4>
+    <p>A CTC é a quantidade de cátions (cargas positivas) que o solo pode reter nas cargas negativas das argilas e MO. É expressa em cmolc/dm³.</p>
+    <div class="formula">CTC = Ca²⁺ + Mg²⁺ + K⁺ + H⁺ + Al³⁺</div>
+    <ul>
+      <li><strong>CTC alta</strong> → solo retém mais nutrientes, menos lixiviação</li>
+      <li><strong>Solo argiloso</strong> → CTC maior que arenoso</li>
+      <li><strong>Matéria orgânica</strong> → grande contribuição para CTC</li>
+    </ul>
+
+    <h4>Saturação por Bases (V%)</h4>
+    <div class="formula">V% = (Ca + Mg + K) / CTC × 100</div>
+    <p>Indica o percentual de cargas ocupadas por bases. A calagem visa elevar V% a valores ideais para cada cultura.</p>
+    <table class="tbl">
+      <tr><th>V%</th><th>Interpretação</th></tr>
+      <tr><td>&lt; 25%</td><td>Solo muito ácido — inadequado</td></tr>
+      <tr><td>25–50%</td><td>Acidez média</td></tr>
+      <tr><td>50–70%</td><td>Faixa ideal para a maioria das culturas</td></tr>
+      <tr><td>&gt; 80%</td><td>Risco de desequilíbrio (alto Ca/Mg)</td></tr>
+    </table>
+
+    <h4>Saturação por Alumínio (m%)</h4>
+    <div class="formula">m% = Al³⁺ / (Ca + Mg + K + Al) × 100</div>
+    <div class="info-box red"><div class="label">Toxidez por alumínio</div>m% &gt; 20–30% é tóxico para a maioria das culturas. Al³⁺ danifica raízes, impede absorção de P, Ca e Mg.</div>
+
+    <h4>pH e disponibilidade de nutrientes</h4>
+    <table class="tbl">
+      <tr><th>Nutriente</th><th>pH Ácido (baixo)</th><th>pH Alcalino (alto)</th></tr>
+      <tr><td>N, P, K, Ca, Mg, S</td><td>Disponibilidade variada</td><td>Melhor disponibilidade geral</td></tr>
+      <tr><td>Fe, Mn, Zn, Cu, Co</td><td>✅ Alta disponibilidade</td><td>❌ Precipitam, indisponíveis</td></tr>
+      <tr><td>Mo, B</td><td>❌ Baixa disponibilidade</td><td>✅ Maior disponibilidade</td></tr>
+      <tr><td>P</td><td>Fixado por Al e Fe</td><td>Fixado por Ca (pH > 7)</td></tr>
+    </table>
+    <div class="info-box"><div class="label">Faixa ideal de pH</div>A maioria das culturas tropicais se desenvolve bem entre <strong>pH 5,5 e 6,5</strong>, onde a disponibilidade de macro e micronutrientes é equilibrada.</div>
+
+    <h4>Lixiviação de Nutrientes</h4>
+    <p>A lixiviação é a perda de nutrientes por percolação de água no solo.</p>
+    <table class="tbl">
+      <tr><th>Nutriente</th><th>Lixiviação</th><th>Motivo</th></tr>
+      <tr><td>NO₃⁻ (nitrato)</td><td>⬆️⬆️⬆️ Muito alta</td><td>Ânion não retido pelo solo</td></tr>
+      <tr><td>K⁺</td><td>⬆️ Média</td><td>Cátion de baixa valência</td></tr>
+      <tr><td>Ca²⁺, Mg²⁺</td><td>↔️ Baixa-média</td><td>Retidos na CTC</td></tr>
+      <tr><td>NH₄⁺ (amônio)</td><td>⬇️ Baixa</td><td>Cátion adsorvido na CTC</td></tr>
+      <tr><td>P (fosfato)</td><td>⬇️⬇️ Muito baixa</td><td>Forte fixação no solo</td></tr>
+    </table>
+  </div>
+
+  <!-- MÓDULO 3 -->
+  <div id="topic-t3" class="topic-section">
+    <h3>Módulo 3 — Calagem</h3>
+    <p>A calagem é a aplicação de calcário para corrigir a acidez do solo, sendo uma das práticas mais importantes na agricultura tropical brasileira.</p>
+
+    <h4>Objetivos da Calagem</h4>
+    <ul>
+      <li>Elevar o pH do solo (neutralizar acidez)</li>
+      <li>Eliminar a toxidez por Al³⁺ e Mn²⁺</li>
+      <li>Fornecer Ca²⁺ e Mg²⁺ como nutrientes</li>
+      <li>Melhorar a atividade microbiana do solo</li>
+      <li>Aumentar a eficiência dos fertilizantes</li>
+    </ul>
+
+    <h4>Tipos de Calcário</h4>
+    <table class="tbl">
+      <tr><th>Tipo</th><th>Composição</th><th>PRNT (%)</th></tr>
+      <tr><td>Calcário Calcítico</td><td>CaCO₃ — alto Ca, pouco Mg (&lt; 5% MgO)</td><td>80–100%</td></tr>
+      <tr><td>Calcário Dolomítico</td><td>CaMg(CO₃)₂ — Ca + Mg (>12% MgO) ⭐</td><td>80–100%</td></tr>
+      <tr><td>Calcário Magnesiano</td><td>Ca + Mg intermediário (6–12% MgO)</td><td>80–100%</td></tr>
+      <tr><td>Cal Virgem (CaO)</td><td>Óxido de cálcio — reação muito rápida</td><td>150–180%</td></tr>
+      <tr><td>Cal Hidratada Ca(OH)₂</td><td>Hidróxido de cálcio — reação rápida</td><td>120–135%</td></tr>
+    </table>
+    <div class="info-box gold"><div class="label">Mais recomendado</div>O <strong>Calcário Dolomítico</strong> é o mais indicado pois fornece Ca e Mg simultaneamente, corrigindo deficiências dos dois nutrientes.</div>
+
+    <h4>PRNT — Poder Relativo de Neutralização Total</h4>
+    <p>O PRNT considera a <strong>qualidade química</strong> (teor de CaCO₃ equivalente) e a <strong>qualidade física</strong> (granulometria — quanto mais fino, mais reativo).</p>
+    <div class="formula">NC (t/ha) = Necessidade × 100 / PRNT</div>
+    <p>Um calcário com PRNT 60% precisa de dose 67% maior que um com PRNT 100%.</p>
+
+    <h4>Métodos de Cálculo da Necessidade de Calagem</h4>
+    <p><strong>1. Método da Saturação por Bases (V%)</strong> — mais usado no Brasil:</p>
+    <div class="formula">NC = (Vf – Va) × CTC / 100</div>
+    <p>Onde Vf = V% desejado; Va = V% atual; CTC = capacidade de troca atual.</p>
+
+    <p><strong>2. Método do Al³⁺ e Ca+Mg:</strong></p>
+    <div class="formula">NC = (Al³⁺ × f) + (x – Ca – Mg)</div>
+    <p>Onde f = 1 ou 2 conforme a tolerância da cultura ao Al.</p>
+
+    <h4>Mecanismo de ação no solo</h4>
+    <div class="info-box">
+      <div class="label">Reação da calagem</div>
+      CaCO₃ + H₂O → Ca²⁺ + HCO₃⁻ → Ca²⁺ desloca Al³⁺ da CTC → Al³⁺ + 3OH⁻ → Al(OH)₃↓ (insolúvel, atóxico) → pH sobe
+    </div>
+
+    <h4>Incorporação e Tempo de Reação</h4>
+    <ul>
+      <li>Calcário incorporado (grade/arado): reação em 60–90 dias</li>
+      <li>Calcário superficial (plantio direto): reação mais lenta, anos</li>
+      <li>Reaplicação: a cada 4–5 anos em média</li>
+    </ul>
+  </div>
+
+  <!-- MÓDULO 4 -->
+  <div id="topic-t4" class="topic-section">
+    <h3>Módulo 4 — Gessagem</h3>
+    <p>O gesso agrícola (CaSO₄·2H₂O — sulfato de cálcio) é um condicionador de subsuperfície, subproduto da fabricação de ácido fosfórico.</p>
+
+    <h4>O que o Gesso FAZ e NÃO FAZ</h4>
+    <table class="tbl">
+      <tr><th>Gesso AGRÍCOLA</th><th>Faz ✅</th><th>NÃO faz ❌</th></tr>
+      <tr><td></td><td>Fornece Ca²⁺ e SO₄²⁻ em profundidade</td><td>NÃO corrige pH</td></tr>
+      <tr><td></td><td>Reduz Al³⁺ em subsuperfície</td><td>NÃO substitui o calcário</td></tr>
+      <tr><td></td><td>Melhora enraizamento em profundidade</td><td>NÃO age na superfície</td></tr>
+      <tr><td></td><td>Fornece enxofre (S)</td><td>NÃO fornece Mg</td></tr>
+    </table>
+
+    <h4>Mecanismo de ação do Gesso</h4>
+    <div class="info-box">
+      <div class="label">Reação</div>
+      CaSO₄ → Ca²⁺ + SO₄²⁻. O SO₄²⁻ forma par iônico com Al³⁺ → Al₂(SO₄)₃ que é solúvel e lixivia → reduz Al tóxico em profundidade. O Ca²⁺ ocupa sítios da CTC em subsuperfície.
+    </div>
+
+    <h4>Doses Recomendadas de Gesso</h4>
+    <table class="tbl">
+      <tr><th>Textura do Solo</th><th>Dose (t/ha)</th></tr>
+      <tr><td>Arenosa (&lt; 15% argila)</td><td>0,5 – 1,0</td></tr>
+      <tr><td>Média (15–35% argila)</td><td>1,0 – 2,0</td></tr>
+      <tr><td>Argilosa (35–60% argila)</td><td>2,0 – 3,0</td></tr>
+      <tr><td>Muito argilosa (&gt; 60%)</td><td>3,0 – 4,0</td></tr>
+    </table>
+    <div class="info-box gold"><div class="label">Regra prática</div>Dose de gesso ≈ 25–50% da dose de calcário. Aplicar sempre em conjunto com a calagem para melhores resultados.</div>
+  </div>
+
+  <!-- MÓDULO 5 -->
+  <div id="topic-t5" class="topic-section">
+    <h3>Módulo 5 — Adubação Nitrogenada</h3>
+    <p>O nitrogênio é o nutriente mais requerido pelas culturas e o que mais limita a produtividade em solos tropicais. É componente essencial de proteínas, clorofila e ácidos nucleicos.</p>
+
+    <h4>Ciclo do Nitrogênio no Solo</h4>
+    <ul>
+      <li><strong>Mineralização:</strong> MO → NH₄⁺ (amônio) — por microrganismos</li>
+      <li><strong>Nitrificação:</strong> NH₄⁺ → NO₂⁻ → NO₃⁻ (nitrato) — aeróbio</li>
+      <li><strong>Desnitrificação:</strong> NO₃⁻ → N₂ (perda gasosa) — anaeróbio</li>
+      <li><strong>Volatilização:</strong> NH₄⁺ → NH₃ (amônia gasosa) — superficial</li>
+      <li><strong>Lixiviação:</strong> NO₃⁻ desce com a água — ânion livre</li>
+      <li><strong>Fixação biológica:</strong> N₂ atmosférico → NH₄⁺ (Rhizobium, Azospirillum)</li>
+    </ul>
+
+    <h4>Principais Fontes de N</h4>
+    <table class="tbl">
+      <tr><th>Fertilizante</th><th>% N</th><th>Forma</th><th>Observação</th></tr>
+      <tr><td>Ureia</td><td>45%</td><td>NH₂</td><td>Mais usada; risco de volatilização</td></tr>
+      <tr><td>Sulfato de Amônio</td><td>21%</td><td>NH₄⁺</td><td>+ 24% S; acidifica o solo</td></tr>
+      <tr><td>Nitrato de Amônio</td><td>33%</td><td>NH₄⁺+NO₃⁻</td><td>Rápida absorção</td></tr>
+      <tr><td>Nitrato de Cálcio</td><td>15%</td><td>NO₃⁻</td><td>+ Ca; não acidifica</td></tr>
+      <tr><td>MAP (Fosfato Mono.)</td><td>11%</td><td>NH₄⁺</td><td>+ 48–52% P₂O₅</td></tr>
+      <tr><td>DAP (Fosfato Di.)</td><td>18%</td><td>NH₄⁺</td><td>+ 46% P₂O₅</td></tr>
+      <tr><td>Amônia Anidra</td><td>82%</td><td>NH₃</td><td>Maior concentração; gás comprimido</td></tr>
+    </table>
+
+    <h4>Volatilização da Ureia</h4>
+    <div class="info-box red"><div class="label">Principal problema</div>Ureia aplicada na superfície sofre hidrólise: CO(NH₂)₂ + H₂O → 2NH₃↑ + CO₂. Perdas de até 50% do N. Maior em solo úmido, pH alto e temperatura elevada.</div>
+    <p><strong>Como evitar:</strong> incorporar mecanicamente, irrigar após aplicação, ou usar ureia com inibidor de urease (NBPT).</p>
+
+    <h4>Formas de Aplicação de N</h4>
+    <ul>
+      <li><strong>Pré-plantio:</strong> incorporado ao solo</li>
+      <li><strong>Plantio:</strong> no sulco, com cautela (fitotoxidez)</li>
+      <li><strong>Cobertura:</strong> parcelamento em culturas de ciclo longo</li>
+      <li><strong>Fertirrigação:</strong> maior eficiência, menor perda</li>
+      <li><strong>Foliar:</strong> complementação — ureia a 0,5–2%</li>
+    </ul>
+  </div>
+
+  <!-- MÓDULO 6 -->
+  <div id="topic-t6" class="topic-section">
+    <h3>Módulo 6 — Adubação Fosfatada</h3>
+    <p>O fósforo é essencial para o desenvolvimento radicular, floração, frutificação e transferência de energia (ATP). Nos solos tropicais, a fixação de P é o maior problema.</p>
+
+    <h4>Fixação do Fósforo no Solo</h4>
+    <p>Em solos oxídicos (Latossolos — predominantes no Brasil), o P reage com óxidos de Fe e Al formando compostos insolúveis.</p>
+    <div class="info-box red"><div class="label">Problema grave</div>Solos com alto teor de argila e óxidos de Fe/Al podem fixar mais de 80% do P aplicado, tornando-o indisponível para as plantas.</div>
+
+    <h4>pH e Disponibilidade do Fósforo</h4>
+    <ul>
+      <li><strong>pH &lt; 5,0:</strong> fixado por Fe e Al (precipita como AlPO₄, FePO₄)</li>
+      <li><strong>pH 5,5–6,5:</strong> ✅ máxima disponibilidade</li>
+      <li><strong>pH &gt; 7,0:</strong> fixado por Ca (precipita como Ca₃(PO₄)₂)</li>
+    </ul>
+
+    <h4>Principais Fontes de P</h4>
+    <table class="tbl">
+      <tr><th>Fertilizante</th><th>% P₂O₅</th><th>% Ca</th><th>% S</th><th>Solubilidade</th></tr>
+      <tr><td>Superfosfato Simples ⭐</td><td>18–20%</td><td>20%</td><td>12%</td><td>Alta (água)</td></tr>
+      <tr><td>Superfosfato Triplo</td><td>41–46%</td><td>14%</td><td>1%</td><td>Alta (água)</td></tr>
+      <tr><td>MAP</td><td>48–52%</td><td>—</td><td>—</td><td>Alta</td></tr>
+      <tr><td>DAP</td><td>46%</td><td>—</td><td>—</td><td>Alta</td></tr>
+      <tr><td>Fosfato de Araxá</td><td>33% P₂O₅ total</td><td>—</td><td>—</td><td>Baixa (ácidos)</td></tr>
+      <tr><td>Termofosfato</td><td>17–18%</td><td>alto</td><td>—</td><td>Média (ácidos)</td></tr>
+    </table>
+
+    <h4>Fosfatos Naturais (Reativos)</h4>
+    <p>Fosfatos naturais de origem sedimentar (ex: Gafsa) têm maior reatividade em solos ácidos. São alternativas de menor custo para acidez elevada, mas de liberação lenta.</p>
+
+    <h4>Adubação Fosfatada de Manutenção vs. Correção</h4>
+    <ul>
+      <li><strong>Correção:</strong> dose elevada para elevar o P no solo ao nível crítico</li>
+      <li><strong>Manutenção:</strong> repor o P exportado pela colheita</li>
+    </ul>
+  </div>
+
+  <!-- MÓDULO 7 -->
+  <div id="topic-t7" class="topic-section">
+    <h3>Módulo 7 — Adubação Potássica</h3>
+    <p>O potássio é o cátion mais absorvido pelas plantas. Não faz parte de compostos orgânicos, mas é fundamental para ativação enzimática, osmorregulação e qualidade dos produtos agrícolas.</p>
+
+    <h4>Funções do Potássio</h4>
+    <ul>
+      <li>Ativação de mais de 60 enzimas</li>
+      <li>Regulação da abertura e fechamento de estômatos</li>
+      <li>Transporte de carboidratos pelo floema</li>
+      <li>Resistência a doenças, seca e geada</li>
+      <li>Qualidade de frutos (sabor, conservação)</li>
+    </ul>
+
+    <h4>Principais Fontes de K</h4>
+    <table class="tbl">
+      <tr><th>Fertilizante</th><th>% K₂O</th><th>Observação</th></tr>
+      <tr><td>Cloreto de Potássio (KCl) ⭐</td><td>58–62%</td><td>Mais barato; mais usado no Brasil</td></tr>
+      <tr><td>Sulfato de Potássio (K₂SO₄)</td><td>48–52%</td><td>+ S; preferido para culturas sensíveis ao Cl</td></tr>
+      <tr><td>Nitrato de Potássio</td><td>44%</td><td>+ N (13%); usado em fertirrigação</td></tr>
+      <tr><td>Sulfato de K e Mg</td><td>22%</td><td>+ S + Mg; para solos deficientes em Mg</td></tr>
+    </table>
+    <div class="info-box gold"><div class="label">Atenção — Cloreto vs. Sulfato</div>Culturas sensíveis ao cloro (tabaco, batata, frutíferas): usar K₂SO₄. Para cana-de-açúcar, soja, milho: KCl é adequado e mais econômico.</div>
+
+    <h4>Comportamento do K no Solo</h4>
+    <ul>
+      <li>K⁺ é retido na CTC, mas menos fortemente que Ca²⁺ e Mg²⁺</li>
+      <li>Em solos arenosos: maior risco de lixiviação → parcelar</li>
+      <li>Em solos argilosos: menor risco, pode aplicar tudo no plantio</li>
+      <li>Relação Ca:Mg:K ideal na CTC = 65:15:5%</li>
+    </ul>
+  </div>
+
+  <!-- MÓDULO 8 -->
+  <div id="topic-t8" class="topic-section">
+    <h3>Módulo 8 — Micronutrientes</h3>
+    <p>Apesar de exigidos em pequenas quantidades, os micronutrientes são essenciais. Sua deficiência pode causar perdas severas de produtividade, mesmo com macro em níveis adequados.</p>
+
+    <h4>Zinco (Zn) — O mais deficiente no Brasil</h4>
+    <ul>
+      <li>Função: síntese de auxinas, proteínas, respiração</li>
+      <li>Deficiência: folhas pequenas, entrenós curtos, "folha pequena"</li>
+      <li>Disponibilidade: decresce com pH alto e excesso de P</li>
+      <li>Fontes: ZnSO₄ (22% Zn), Zn-EDTA quelato, óxido de Zn</li>
+    </ul>
+    <div class="info-box red"><div class="label">Antagonismo P × Zn</div>Excesso de fósforo no solo e nas raízes precipita o Zn, reduzindo sua absorção. Fundamental em solos com alta adubação fosfatada.</div>
+
+    <h4>Boro (B)</h4>
+    <ul>
+      <li>Função: formação da parede celular, frutificação, germinação do pólen</li>
+      <li>Deficiência: morte do broto terminal, frutos deformados</li>
+      <li><strong>Imóvel no floema</strong> → deficiência aparece nas folhas novas</li>
+      <li>Maior disponibilidade em pH ácido; aumenta em pH alcalino (diferente dos metálicos)</li>
+      <li>Fontes: ácido bórico (17% B), bórax (11% B), ulexita</li>
+    </ul>
+
+    <h4>Ferro (Fe)</h4>
+    <ul>
+      <li>Função: síntese da clorofila, respiração, fixação de N₂</li>
+      <li>Deficiência: clorose internerval nas folhas novas</li>
+      <li>Muito influenciado pelo pH — pH alto = Fe precipita</li>
+      <li>Quase imóvel na planta: aplicação foliar fica localizada</li>
+    </ul>
+
+    <h4>Manganês (Mn)</h4>
+    <ul>
+      <li>Função: fotossíntese (liberação O₂), ativador enzimático</li>
+      <li>Deficiência: clorose internerval folhas novas (similar ao Fe)</li>
+      <li>Excesso em solos muito ácidos pode ser tóxico</li>
+    </ul>
+
+    <h4>Molibdênio (Mo)</h4>
+    <ul>
+      <li>Função: fixação biológica de N (componente da nitrogenase), redução de nitrato</li>
+      <li>Deficiência: "chama de vela" em leguminosas; similar ao N</li>
+      <li><strong>Único micro que aumenta disponibilidade com pH alto</strong></li>
+      <li>Doses muito pequenas: 50–200 g/ha</li>
+    </ul>
+
+    <h4>Tabela Resumo — Micronutrientes</h4>
+    <table class="tbl">
+      <tr><th>Micro</th><th>pH ideal</th><th>Mobilidade planta</th><th>Principal problema</th></tr>
+      <tr><td>Fe</td><td>Ácido</td><td>Quase imóvel</td><td>pH alto → precipita</td></tr>
+      <tr><td>Mn</td><td>Ácido</td><td>Quase imóvel</td><td>Tóxico em pH muito baixo</td></tr>
+      <tr><td>Zn</td><td>Ácido</td><td>Quase imóvel</td><td>Antagonismo com P</td></tr>
+      <tr><td>Cu</td><td>Ácido</td><td>Quase imóvel</td><td>Fixado por MO</td></tr>
+      <tr><td>B</td><td>Ampla faixa</td><td>Imóvel</td><td>Margem estreita toxicidade</td></tr>
+      <tr><td>Mo</td><td>Alcalino ⭐</td><td>Móvel</td><td>Raro — responde à calagem</td></tr>
+    </table>
+  </div>
+
+  <!-- MÓDULO 9 -->
+  <div id="topic-t9" class="topic-section">
+    <h3>Módulo 9 — Adubação Foliar</h3>
+    <p>A adubação foliar é a aplicação de nutrientes diretamente nas folhas, complementando a adubação de solo. Não substitui a adubação convencional — é uma ferramenta de correção e otimização.</p>
+
+    <h4>Quando usar adubação foliar</h4>
+    <ul>
+      <li>Correção rápida de deficiências nutricionais</li>
+      <li>Nutrientes imóveis no solo (Fe, Zn, Mn, B)</li>
+      <li>Solos com alta capacidade de fixação (P, Zn)</li>
+      <li>Complementação em períodos críticos (florescimento, enchimento de grãos)</li>
+      <li>Culturas de alto valor econômico</li>
+    </ul>
+
+    <h4>Vantagens e Limitações</h4>
+    <table class="tbl">
+      <tr><th>Vantagens</th><th>Limitações</th></tr>
+      <tr><td>Resposta rápida</td><td>Quantidade limitada por aplicação</td></tr>
+      <tr><td>Contorna fixação no solo</td><td>Risco de fitotoxidez</td></tr>
+      <tr><td>Eficiente para micros</td><td>Dependente de condições climáticas</td></tr>
+      <tr><td>Menor dose necessária</td><td>Não funciona bem para macros em grande quantidade</td></tr>
+    </table>
+
+    <h4>Fatores que afetam a absorção foliar</h4>
+    <ul>
+      <li><strong>Cutícula:</strong> espessura e composição cerosa — barreira principal</li>
+      <li><strong>Estômatos:</strong> abertura facilita entrada de íons</li>
+      <li><strong>pH da calda:</strong> afeta ionização e penetração</li>
+      <li><strong>Umidade:</strong> folhas túrgidas absorvem melhor</li>
+      <li><strong>Temperatura:</strong> baixa temperatura reduz absorção</li>
+      <li><strong>Surfactante:</strong> reduz tensão superficial, melhora cobertura</li>
+    </ul>
+
+    <h4>Mobilidade e implicação prática</h4>
+    <div class="info-box"><div class="label">Regra de ouro</div>Nutrientes <strong>móveis</strong> (N, P, K, Mg, S): aplicar em qualquer folha — redistribuem pela planta. Nutrientes <strong>imóveis</strong> (Ca, B, Fe, Zn, Mn, Cu): aplicar nas folhas que precisam, pois não se movem!</div>
+
+    <h4>Concentrações usuais para adubação foliar</h4>
+    <table class="tbl">
+      <tr><th>Nutriente</th><th>Fonte</th><th>Concentração</th></tr>
+      <tr><td>N</td><td>Ureia</td><td>0,5–2%</td></tr>
+      <tr><td>B</td><td>Ácido bórico</td><td>0,1–0,3%</td></tr>
+      <tr><td>Zn</td><td>ZnSO₄</td><td>0,1–0,5%</td></tr>
+      <tr><td>Fe</td><td>FeSO₄ ou quelato</td><td>0,2–0,5%</td></tr>
+      <tr><td>Mn</td><td>MnSO₄</td><td>0,1–0,3%</td></tr>
+      <tr><td>Cu</td><td>CuSO₄</td><td>0,1–0,2%</td></tr>
+    </table>
+  </div>
+
+  <!-- MÓDULO 10 -->
+  <div id="topic-t10" class="topic-section">
+    <h3>Módulo 10 — Análise de Solo e Interpretação</h3>
+    <p>A análise de solo é a ferramenta base para qualquer programa de adubação. Sem ela, a adubação é um "chute" que pode desperdiçar recursos ou causar danos.</p>
+
+    <h4>O que a análise mede</h4>
+    <ul>
+      <li><strong>pH em CaCl₂ ou H₂O</strong> — acidez atual</li>
+      <li><strong>P disponível</strong> — fósforo extraído (Mehlich ou resina)</li>
+      <li><strong>K⁺</strong> — potássio trocável</li>
+      <li><strong>Ca²⁺ e Mg²⁺</strong> — cátions trocáveis</li>
+      <li><strong>Al³⁺ + H⁺</strong> — acidez potencial</li>
+      <li><strong>MO</strong> — matéria orgânica (%)</li>
+      <li><strong>CTC, V%, m%</strong> — calculados</li>
+    </ul>
+
+    <h4>Interpretação do P no Solo (Mehlich-1)</h4>
+    <table class="tbl">
+      <tr><th>P (mg/dm³)</th><th>Interpretação</th><th>Ação</th></tr>
+      <tr><td>&lt; 5</td><td>Muito baixo</td><td>Adubação corretiva + manutenção</td></tr>
+      <tr><td>5–10</td><td>Baixo</td><td>Adubação corretiva moderada</td></tr>
+      <tr><td>10–20</td><td>Médio</td><td>Adubação de manutenção</td></tr>
+      <tr><td>20–40</td><td>Bom</td><td>Manutenção reduzida</td></tr>
+      <tr><td>&gt; 40</td><td>Muito alto</td><td>Sem aplicação ou mínima</td></tr>
+    </table>
+
+    <h4>Interpretação do K no Solo</h4>
+    <table class="tbl">
+      <tr><th>K (cmolc/dm³)</th><th>Interpretação</th></tr>
+      <tr><td>&lt; 0,08</td><td>Muito baixo</td></tr>
+      <tr><td>0,08–0,15</td><td>Baixo</td></tr>
+      <tr><td>0,15–0,30</td><td>Médio</td></tr>
+      <tr><td>0,30–0,60</td><td>Bom</td></tr>
+      <tr><td>&gt; 0,60</td><td>Muito alto</td></tr>
+    </table>
+
+    <h4>Amostragem de Solo — Boas Práticas</h4>
+    <ul>
+      <li>Coletar 15–20 subamostras por talhão homogêneo</li>
+      <li>Profundidade: 0–20 cm (camada arável) e 20–40 cm (subsuperfície)</li>
+      <li>Evitar locais atípicos: bordas, formigueiros, locais úmidos</li>
+      <li>Usar trado calador ou enxadão</li>
+      <li>Época: após colheita, antes da próxima aplicação</li>
+      <li>Frequência: a cada 2–3 anos</li>
+    </ul>
+
+    <div class="info-box gold"><div class="label">Ordem de prioridade agronômica</div>
+      1º Calagem → 2º Gessagem → 3º Adubação fosfatada corretiva → 4º Adubação de manutenção NPK → 5º Micronutrientes. Sem corrigir o pH, a adubação perde eficiência!
+    </div>
+  </div>
+</div><!-- fim teoria -->
+
+<!-- ═══════════════════════════════ RESUMO ═══════════════════════════════ -->
+<div id="tab-resumo" class="tab">
+  <div class="sec-title">📋 Resumo para Prova
+    <div class="sec-sub">Tudo que você precisa decorar</div>
+  </div>
+
+  <div class="card accent-green">
+    <div class="card-title"><span class="ico">🌿</span>Mobilidade de Nutrientes</div>
+    <div class="row"><span class="lbl">Móveis no floema</span><span class="val">N, P, K, Mg, S</span></div>
+    <div class="row"><span class="lbl">Imóveis no floema</span><span class="val">Ca, B</span></div>
+    <div class="row"><span class="lbl">Quase imóveis (foliar)</span><span class="val">Fe, Zn, Mn, Cu</span></div>
+    <div class="row"><span class="lbl">Imóvel no SOLO</span><span class="val">P (fixado por Fe, Al, Ca)</span></div>
+    <div class="row"><span class="lbl">Mais lixiviado</span><span class="val">NO₃⁻ (ânion livre)</span></div>
+  </div>
+
+  <div class="card accent-blue">
+    <div class="card-title"><span class="ico">⚗️</span>Macro vs. Micronutrientes</div>
+    <div class="row"><span class="lbl">Macronutrientes (6)</span><span class="val">N · P · K · Ca · Mg · S</span></div>
+    <div class="row"><span class="lbl">Micronutrientes (8)</span><span class="val">Fe · Mn · Zn · Cu · B · Mo · Cl · Ni</span></div>
+    <div class="row"><span class="lbl">Exigência macro</span><span class="val">&gt; 1 g/kg massa seca</span></div>
+    <div class="row"><span class="lbl">Exigência micro</span><span class="val">&lt; 100 mg/kg massa seca</span></div>
+  </div>
+
+  <div class="card accent-gold">
+    <div class="card-title"><span class="ico">🧪</span>pH e Disponibilidade</div>
+    <div class="row"><span class="lbl">pH alto → micro metálico</span><span class="val">↓ Precipitam</span></div>
+    <div class="row"><span class="lbl">pH baixo → micro metálico</span><span class="val">↑ Disponíveis</span></div>
+    <div class="row"><span class="lbl">Mo e B</span><span class="val">↑ em pH alto (diferente!)</span></div>
+    <div class="row"><span class="lbl">P — pH ideal</span><span class="val">5,5 a 6,5</span></div>
+    <div class="row"><span class="lbl">Antagonismo clássico</span><span class="val">P × Zn</span></div>
+    <div class="row"><span class="lbl">pH ideal geral</span><span class="val">5,5 a 6,5</span></div>
+  </div>
+
+  <div class="card accent-green">
+    <div class="card-title"><span class="ico">🪨</span>Calcário vs. Gesso</div>
+    <div class="row"><span class="lbl">Calcário: corrige pH?</span><span class="val">✅ SIM</span></div>
+    <div class="row"><span class="lbl">Gesso: corrige pH?</span><span class="val">❌ NÃO</span></div>
+    <div class="row"><span class="lbl">Calcário fornece</span><span class="val">Ca + Mg (superfície)</span></div>
+    <div class="row"><span class="lbl">Gesso fornece</span><span class="val">Ca + S (profundidade)</span></div>
+    <div class="row"><span class="lbl">Calcário ação</span><span class="val">Troca Al³⁺ por Ca/Mg na CTC</span></div>
+    <div class="row"><span class="lbl">Melhor calcário</span><span class="val">Dolomítico (Ca + Mg)</span></div>
+    <div class="row"><span class="lbl">PRNT</span><span class="val">Qualidade química + física</span></div>
+  </div>
+
+  <div class="card accent-blue">
+    <div class="card-title"><span class="ico">🧴</span>Fontes de Fertilizantes</div>
+    <div class="row"><span class="lbl">Ureia</span><span class="val">45% N</span></div>
+    <div class="row"><span class="lbl">Sulfato de amônio</span><span class="val">21% N + 24% S</span></div>
+    <div class="row"><span class="lbl">Superfosfato simples ⭐</span><span class="val">18% P + 20% Ca + 12% S</span></div>
+    <div class="row"><span class="lbl">Superfosfato triplo</span><span class="val">41% P + 14% Ca (pouco S)</span></div>
+    <div class="row"><span class="lbl">KCl</span><span class="val">58-62% K₂O</span></div>
+    <div class="row"><span class="lbl">Sulfato de potássio</span><span class="val">48% K₂O + S</span></div>
+    <div class="row"><span class="lbl">NPK + Ca + S</span><span class="val">Sulf.amônio + Superf.simples + KCl</span></div>
+  </div>
+
+  <div class="card accent-gold">
+    <div class="card-title"><span class="ico">🌱</span>Matéria Orgânica e Micronutrientes</div>
+    <div class="row"><span class="lbl">MO + micros</span><span class="val">Quelação → aumenta disponibilidade</span></div>
+    <div class="row"><span class="lbl">Micros quelados</span><span class="val">Fe, Zn, Mn, Cu</span></div>
+    <div class="row"><span class="lbl">Quelatos são</span><span class="val">Solúveis — micros ficam na solução</span></div>
+    <div class="row"><span class="lbl">MO também melhora</span><span class="val">CTC, estrutura, retenção de água</span></div>
+  </div>
+
+  <div class="card accent-red">
+    <div class="card-title"><span class="ico">⚡</span>Macetes Rápidos</div>
+    <div class="row"><span class="lbl">Macro — decorar</span><span class="val">"N-P-K Ca-Mg-S"</span></div>
+    <div class="row"><span class="lbl">Micro metálico</span><span class="val">Gosta de solo ÁCIDO</span></div>
+    <div class="row"><span class="lbl">Mo e B</span><span class="val">Exceção: preferem pH mais alto</span></div>
+    <div class="row"><span class="lbl">Nitrato lixivia</span><span class="val">Ânion → solo não retém</span></div>
+    <div class="row"><span class="lbl">P imóvel no solo</span><span class="val">Mas móvel na planta!</span></div>
+    <div class="row"><span class="lbl">Gesso ≠ Calcário</span><span class="val">Gesso = Ca+S profundidade, sem pH</span></div>
+    <div class="row"><span class="lbl">Ureia: cuidado</span><span class="val">Volatiliza em superfície seca+quente</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ FLASHCARDS ═══════════════════════════════ -->
+<div id="tab-flash" class="tab">
+  <div class="sec-title">🃏 Flashcards
+    <div class="sec-sub">Toque no card para ver a resposta</div>
+  </div>
+  <div id="fc-counter" style="color:var(--text3);font-size:13px;margin-bottom:10px"></div>
+  <div class="progress-bar"><div class="progress-fill" id="fc-progress"></div></div>
+  <div class="flashcard" id="flashcard" onclick="flipCard()">
+    <div class="fc-lbl" id="fc-label">Pergunta</div>
+    <div class="fc-txt" id="fc-text"></div>
+  </div>
+  <div class="fc-nav">
+    <button class="btn btn-secondary" onclick="fcNav(-1)">← Anterior</button>
+    <button class="btn btn-primary" onclick="fcNav(1)">Próximo →</button>
+  </div>
+  <button class="btn btn-ghost" style="margin-top:8px" onclick="fcRandom()">🔀 Card Aleatório</button>
+</div>
+
+<!-- ═══════════════════════════════ QUIZ ═══════════════════════════════ -->
+<div id="tab-quiz" class="tab">
+  <div class="sec-title">✏️ Simulado
+    <div class="sec-sub">30 questões · Todos os temas</div>
+  </div>
+  <div id="quiz-area"></div>
+</div>
+
+<!-- ═══════════════════════════════ TABELAS ═══════════════════════════════ -->
+<div id="tab-tabelas" class="tab">
+  <div class="sec-title">📊 Tabelas de Referência</div>
+
+  <h3>Fontes de N e seus teores</h3>
+  <table class="tbl">
+    <tr><th>Fertilizante</th><th>N%</th><th>Outros</th></tr>
+    <tr><td>Ureia</td><td>45</td><td>—</td></tr>
+    <tr><td>Sulfato de amônio</td><td>21</td><td>S: 24%</td></tr>
+    <tr><td>Nitrato de amônio</td><td>33</td><td>—</td></tr>
+    <tr><td>Nitrato de cálcio</td><td>15</td><td>Ca: 19%</td></tr>
+    <tr><td>MAP</td><td>11</td><td>P₂O₅: 52%</td></tr>
+    <tr><td>DAP</td><td>18</td><td>P₂O₅: 46%</td></tr>
+    <tr><td>Amônia anidra</td><td>82</td><td>—</td></tr>
+  </table>
+
+  <h3>Fontes de P e seus teores</h3>
+  <table class="tbl">
+    <tr><th>Fertilizante</th><th>P₂O₅%</th><th>Ca%</th><th>S%</th></tr>
+    <tr><td>Superfosfato simples ⭐</td><td>18–20</td><td>20</td><td>12</td></tr>
+    <tr><td>Superfosfato triplo</td><td>41–46</td><td>14</td><td>1</td></tr>
+    <tr><td>MAP</td><td>48–52</td><td>—</td><td>—</td></tr>
+    <tr><td>DAP</td><td>46</td><td>—</td><td>—</td></tr>
+    <tr><td>Fosfato de Araxá</td><td>33 total</td><td>—</td><td>—</td></tr>
+  </table>
+
+  <h3>Fontes de K e seus teores</h3>
+  <table class="tbl">
+    <tr><th>Fertilizante</th><th>K₂O%</th><th>Outros</th></tr>
+    <tr><td>Cloreto de potássio ⭐</td><td>58–62</td><td>Cl: 47%</td></tr>
+    <tr><td>Sulfato de potássio</td><td>48–52</td><td>S: 18%</td></tr>
+    <tr><td>Nitrato de potássio</td><td>44</td><td>N: 13%</td></tr>
+    <tr><td>Sulfato de K e Mg</td><td>22</td><td>Mg: 11%, S: 22%</td></tr>
+  </table>
+
+  <h3>Micronutrientes — Fontes e teores</h3>
+  <table class="tbl">
+    <tr><th>Micro</th><th>Fonte</th><th>Teor</th><th>Via</th></tr>
+    <tr><td>Zn</td><td>ZnSO₄ · 7H₂O</td><td>22% Zn</td><td>Solo/foliar</td></tr>
+    <tr><td>Zn</td><td>Zn-EDTA</td><td>9–14% Zn</td><td>Foliar/fertirrig.</td></tr>
+    <tr><td>B</td><td>Ácido bórico</td><td>17% B</td><td>Foliar</td></tr>
+    <tr><td>B</td><td>Bórax</td><td>11% B</td><td>Solo/foliar</td></tr>
+    <tr><td>Fe</td><td>FeSO₄</td><td>19% Fe</td><td>Solo/foliar</td></tr>
+    <tr><td>Fe</td><td>Fe-EDTA</td><td>13% Fe</td><td>Foliar/fertirrig.</td></tr>
+    <tr><td>Mn</td><td>MnSO₄</td><td>26% Mn</td><td>Solo/foliar</td></tr>
+    <tr><td>Cu</td><td>CuSO₄</td><td>25% Cu</td><td>Solo/foliar</td></tr>
+    <tr><td>Mo</td><td>Molibdato de Na</td><td>39% Mo</td><td>Semente/foliar</td></tr>
+  </table>
+
+  <h3>Interpretação de V% e m%</h3>
+  <table class="tbl">
+    <tr><th>V% (sat. bases)</th><th>m% (sat. Al)</th><th>Interpretação</th></tr>
+    <tr><td>&lt; 25%</td><td>&gt; 50%</td><td>Solo muito ácido — calagem urgente</td></tr>
+    <tr><td>25–50%</td><td>20–50%</td><td>Acidez moderada</td></tr>
+    <tr><td>50–70%</td><td>&lt; 20%</td><td>✅ Ideal para maioria das culturas</td></tr>
+    <tr><td>70–80%</td><td>&lt; 5%</td><td>Bom — culturas exigentes</td></tr>
+    <tr><td>&gt; 80%</td><td>&lt; 5%</td><td>Risco de desequilíbrio Ca/Mg</td></tr>
+  </table>
+
+  <h3>Calcários — Tipos e PRNT</h3>
+  <table class="tbl">
+    <tr><th>Tipo</th><th>MgO%</th><th>PRNT médio</th></tr>
+    <tr><td>Calcítico</td><td>&lt; 5%</td><td>75–90%</td></tr>
+    <tr><td>Magnesiano</td><td>6–12%</td><td>80–95%</td></tr>
+    <tr><td>Dolomítico ⭐</td><td>&gt; 12%</td><td>80–100%</td></tr>
+    <tr><td>Cal virgem (CaO)</td><td>—</td><td>150–180%</td></tr>
+    <tr><td>Cal hidratada</td><td>—</td><td>120–135%</td></tr>
+  </table>
+</div><!-- fim tabelas -->
+
+</div><!-- wrap -->
+
+<script>
+// ─── DATA — FLASHCARDS (30 cards) ──────────────────────
+const FC = [
+  {f:"Quais os 6 MACRONUTRIENTES?",b:"N · P · K · Ca · Mg · S\n(Nitrogênio, Fósforo, Potássio, Cálcio, Magnésio, Enxofre)\nExigidos em > 1 g/kg de massa seca."},
+  {f:"Quais os 8 MICRONUTRIENTES?",b:"Fe · Mn · Zn · Cu · B · Mo · Cl · Ni\n(Ferro, Manganês, Zinco, Cobre, Boro, Molibdênio, Cloro, Níquel)"},
+  {f:"Quais nutrientes são MÓVEIS no floema?",b:"N, P, K, Mg, S\nSe redistribuem pela planta toda quando aplicados via foliar."},
+  {f:"Quais nutrientes são IMÓVEIS no floema?",b:"Ca e B\nFicam presos onde foram depositados — não se redistribuem."},
+  {f:"Quais nutrientes são QUASE IMÓVEIS na adubação foliar?",b:"Fe, Zn, Mn, Cu\nMicronutrientes metálicos — ficam no ponto de aplicação."},
+  {f:"O fósforo é móvel ou imóvel? Explique o paradoxo.",b:"DUPLA natureza:\n• No SOLO → imóvel (fixado por Fe, Al e Ca)\n• No FLOEMA/PLANTA → móvel (redistribui-se)\nSempre olhe o contexto da questão!"},
+  {f:"Qual nutriente lixivia mais e por quê?",b:"Nitrato (NO₃⁻)\nÉ ânion (carga negativa). O solo tem cargas negativas → repulsão → não é retido. Altamente solúvel em água."},
+  {f:"O que é CTC e o que influencia seu valor?",b:"Capacidade de Troca de Cátions — quantidade de cátions que o solo pode reter.\nInfluenciada por: teor de argila, tipo de argila e % de matéria orgânica. Expressa em cmolc/dm³."},
+  {f:"O que é V% e qual o valor ideal?",b:"Saturação por Bases = (Ca+Mg+K) / CTC × 100\nIdeal: 50–70% para a maioria das culturas tropicais.\nCalagem visa elevar V% ao valor desejado."},
+  {f:"O que é m% e qual o limite de toxidez?",b:"Saturação por Alumínio = Al / (Ca+Mg+K+Al) × 100\nm% > 20–30% → toxidez para a maioria das culturas.\nAl³⁺ danifica raízes e impede absorção de P, Ca e Mg."},
+  {f:"O que faz o CALCÁRIO no solo? Como age?",b:"1. Fornece Ca²⁺ e Mg²⁺\n2. Ocupa sítios de troca na CTC\n3. Desloca Al³⁺ e H⁺\n4. Al³⁺ precipita como Al(OH)₃ (insolúvel, atóxico)\n5. pH sobe → acidez reduzida"},
+  {f:"Qual o melhor tipo de calcário e por quê?",b:"Calcário DOLOMÍTICO (> 12% MgO)\nFornece Ca E Mg simultaneamente, corrigindo deficiência dos dois nutrientes. O calcítico só fornece Ca."},
+  {f:"O que é PRNT do calcário?",b:"Poder Relativo de Neutralização Total.\nConsidera qualidade química (teor de CaCO₃ equiv.) e física (granulometria).\nPRNT maior = produto mais eficiente = menor dose necessária."},
+  {f:"O que faz o GESSO AGRÍCOLA?",b:"Fornece Ca²⁺ e SO₄²⁻ (enxofre) em SUBSUPERFÍCIE.\nReduz Al³⁺ tóxico em profundidade.\nMelhora enraizamento. NÃO corrige pH. NÃO substitui calcário."},
+  {f:"Qual a principal diferença entre CALCÁRIO e GESSO?",b:"Calcário: corrige pH, age na superfície, fornece Ca + Mg.\nGesso: NÃO corrige pH, age em profundidade, fornece Ca + S.\nSão complementares, não substitutos!"},
+  {f:"Como o pH ALTO afeta micronutrientes metálicos?",b:"Fe, Zn, Mn, Cu precipitam como hidróxidos insolúveis em pH alto → ficam indisponíveis.\nRegra: micro metálico gosta de solo ácido!"},
+  {f:"Mo e B se comportam diferente dos outros micros em relação ao pH?",b:"SIM! Ao contrário dos metálicos:\n• Mo: disponibilidade AUMENTA com pH alto\n• B: disponível em faixa ampla, mas também aumenta em pH mais alto\nComo resolver deficiência de Mo → calagem!"},
+  {f:"Qual o antagonismo clássico entre nutrientes?",b:"P × Zn: excesso de fósforo REDUZ absorção de zinco pelas plantas.\nTambém: excesso de K reduz Mg; excesso de Ca reduz Mg e K."},
+  {f:"Como a MATÉRIA ORGÂNICA beneficia micronutrientes?",b:"Forma QUELATOS (complexos orgânicos) com Fe, Zn, Mn, Cu.\nQuelatos são solúveis → micros ficam em solução disponíveis.\nMO também aumenta CTC e tampona variações de pH."},
+  {f:"Qual fertilizante fornece NPK + Ca + S?",b:"Sulfato de amônio (N + S)\n+ Superfosfato simples (P + Ca + S)\n+ Cloreto de potássio (K)\nO SUPERFOSFATO SIMPLES é a chave — único que tem Ca e S juntos com P!"},
+  {f:"Qual a diferença entre Superfosfato SIMPLES e TRIPLO?",b:"Simples: 18–20% P₂O₅ + 20% Ca + 12% S (mais completo)\nTriplo: 41–46% P₂O₅ + 14% Ca + ~1% S (mais concentrado em P)\nPara fornecer Ca e S → SIMPLES!"},
+  {f:"Qual o risco da UREIA em superfície?",b:"Volatilização de NH₃!\nCO(NH₂)₂ + H₂O → 2NH₃↑ + CO₂\nPerdas de até 50% do N em: solo seco/quente, pH alto, sem incorporação.\nSolução: incorporar, irrigar logo após ou usar inibidor de urease (NBPT)."},
+  {f:"O que é adubação foliar e quando usar?",b:"Aplicação de nutrientes diretamente nas folhas.\nUsar quando:\n• Deficiência aguda (resposta rápida)\n• Nutriente fixado no solo (Zn, Fe)\n• Complementação em período crítico\nNÃO substitui adubação de solo!"},
+  {f:"Quais formas do nitrogênio existem no solo?",b:"NH₄⁺ (amônio): cátion, retido na CTC, menos móvel\nNO₃⁻ (nitrato): ânion, não retido, lixivia facilmente\nNH₃ (amônia): gás — perda por volatilização\nN-orgânico: na MO, mineraliza lentamente"},
+  {f:"O que é fixação de P e como minimizar?",b:"Em solos com óxidos de Fe e Al (Latossolos), o P reage formando AlPO₄ e FePO₄ insolúveis.\nMinimizar: elevar pH (calagem), aumentar MO, usar fertilizante no sulco de plantio (concentrar), fosfatos naturais."},
+  {f:"Por que parcelar a adubação nitrogenada?",b:"N (especialmente nitrato) é muito móvel — lixivia facilmente.\nUm parcelamento reduz perdas e aumenta eficiência de uso.\nGeralmente: 1/3 no plantio + 2/3 em cobertura (até 2–3 parcelas)."},
+  {f:"Quando usar KCl vs. Sulfato de Potássio?",b:"KCl (58–62% K₂O): mais barato, uso geral para soja, milho, cana.\nK₂SO₄ (48–52% K₂O): culturas sensíveis ao cloro — tabaco, batata, algumas frutíferas. Também quando precisa de S."},
+  {f:"Como interpretar V% para calagem?",b:"V% ideal para maioria das culturas: 60–70%.\nFórmula: NC = (Vf – Va) × CTC / 100\nVf = V% desejado; Va = V% atual; CTC = capacidade atual.\nResultado em t/ha de calcário com PRNT 100%."},
+  {f:"Quais os critérios de essencialidade de um nutriente?",b:"1. Ausência impede ciclo de vida completo\n2. Não pode ser substituído por outro elemento\n3. Participa diretamente do metabolismo vegetal\n(Arnon & Stout, 1939)"},
+  {f:"O que são quelatos e qual sua importância na adubação?",b:"Quelatos são compostos orgânicos que 'prendem' micronutrientes (Fe, Zn, Mn, Cu) em forma solúvel.\nImpedindo precipitação e fixação no solo.\nQuelatos-EDTA: muito usados em fertirrigação e foliar por alta disponibilidade e estabilidade."},
+];
+
+// ─── DATA — QUESTÕES (30) ──────────────────────────────
+const QS = [
+  {q:"Na adubação foliar, qual nutriente é considerado 'quase imóvel'?",o:["A) Nitrogênio (N)","B) Potássio (K)","C) Ferro (Fe)","D) Fósforo (P)","E) Magnésio (Mg)"],a:2,e:"Fe é micronutriente metálico — quase imóvel no floema. Fica preso no local de aplicação. N, P, K, Mg são móveis."},
+  {q:"A aplicação de gesso agrícola no solo está relacionada principalmente a:",o:["A) Correção do pH e aumento do potássio","B) Fornecimento de nitrogênio e enxofre","C) Aumento da disponibilidade de fósforo","D) Fornecimento de cálcio e enxofre em profundidade","E) Neutralização do alumínio apenas na camada superficial"],a:3,e:"Gesso (CaSO₄) fornece Ca²⁺ e SO₄²⁻ em subsuperfície. NÃO corrige pH. Age em profundidade."},
+  {q:"São considerados MICRONUTRIENTES:",o:["A) Potássio, cobre, boro","B) Magnésio, cobre, zinco","C) Fósforo, cobalto, molibdênio","D) Manganês, ferro, zinco","E) Enxofre, cálcio e manganês"],a:3,e:"Mn, Fe e Zn são todos micronutrientes. K, Mg, P, S, Ca são macronutrientes."},
+  {q:"Qual nutriente é mais sujeito à lixiviação e por quê?",o:["A) Fósforo — muito solúvel","B) Potássio — cátion livre","C) Nitrogênio na forma de nitrato (NO₃⁻)","D) Cálcio — divalente","E) Magnésio — muito móvel"],a:2,e:"NO₃⁻ é ânion. O solo tem cargas negativas → repulsão. Não é retido e desce com a água. P é o oposto: muito imóvel."},
+  {q:"Altos teores de fósforo no solo podem reduzir a absorção de:",o:["A) Nitrogênio","B) Zinco","C) Cálcio","D) Potássio","E) Magnésio"],a:1,e:"Antagonismo P×Zn: excesso de P interfere na absorção de Zn pelas plantas. Clássico em solos com alta adubação fosfatada."},
+  {q:"O aumento do pH do solo tende a:",o:["A) Aumentar disponibilidade de Fe, Zn e Mn","B) Reduzir a disponibilidade de micronutrientes metálicos como Fe, Zn e Mn","C) Não afetar micronutrientes","D) Aumentar toxidez por Al³⁺","E) Reduzir disponibilidade de Mo"],a:1,e:"pH alto → micro metálicos precipitam como hidróxidos insolúveis → menos disponíveis. Mo é exceção: disponibilidade aumenta com pH alto."},
+  {q:"A matéria orgânica aumenta a disponibilidade de micronutrientes porque:",o:["A) Acidifica o solo","B) Imobiliza os micros permanentemente","C) Forma quelatos solúveis com Fe, Zn, Mn e Cu","D) Aumenta a lixiviação dos micros","E) Reduz a CTC do solo"],a:2,e:"MO forma complexos orgânicos (quelatos) com metais. Quelatos são solúveis — mantêm micros disponíveis na solução do solo."},
+  {q:"Qual combinação fornece N, P e K e TAMBÉM Ca e S?",o:["A) Ureia + Superfosfato triplo + KCl","B) Amônia anidra + Ácido fosfórico + KCl","C) Ureia + DAP + Sulfato de potássio","D) Nitrato de cálcio + MAP + KCl","E) Sulfato de amônio + Superfosfato simples + KCl"],a:4,e:"Sulf.amônio = N+S; Superfosfato SIMPLES = P+Ca+S; KCl = K. O simples é chave pois contém Ca e S junto ao P!"},
+  {q:"Qual par representa DOIS micronutrientes (não macro+micro)?",o:["A) Enxofre e boro","B) Molibdênio e manganês","C) Magnésio e zinco","D) Cálcio e cobre","E) Potássio e ferro"],a:1,e:"Mo e Mn são ambos micronutrientes. Nas outras: S, Mg, Ca, K são macronutrientes — formando par macro+micro."},
+  {q:"O calcário dolomítico é preferido ao calcítico porque:",o:["A) Tem maior PRNT","B) Corrige o solo mais rapidamente","C) Fornece Ca e Mg simultaneamente","D) É mais barato","E) Não acidifica o solo"],a:2,e:"O dolomítico (>12% MgO) fornece Ca E Mg. O calcítico fornece só Ca. Solos tropicais frequentemente deficientes em Mg se beneficiam do dolomítico."},
+  {q:"O PRNT do calcário considera:",o:["A) Apenas o teor de CaCO₃","B) Apenas a granulometria do produto","C) Qualidade química (CaCO₃ equiv.) e física (granulometria)","D) Apenas o teor de MgO","E) Apenas o pH do solo"],a:2,e:"PRNT = qualidade química (neutralização) × qualidade física (reatividade pela granulometria). Produto mais fino reage mais rápido."},
+  {q:"A volatilização da ureia é maior quando:",o:["A) Incorporada ao solo","B) Aplicada em superfície seca e quente, pH elevado","C) Usada em fertirrigação","D) Aplicada em solo ácido","E) Misturada com superfosfato simples"],a:1,e:"Ureia em superfície: CO(NH₂)₂ + H₂O → NH₃↑. Piora com: solo quente, pH alto, ausência de chuva/irrigação. Perdas até 50%."},
+  {q:"O fósforo tem comportamento paradoxal no solo e na planta. Assinale o correto:",o:["A) Imóvel no solo e imóvel na planta","B) Móvel no solo e imóvel na planta","C) Imóvel no solo e móvel no floema (planta)","D) Móvel no solo e móvel na planta","E) Imóvel apenas em solos ácidos"],a:2,e:"P no SOLO: imóvel — fixado por óxidos de Fe, Al ou Ca. P na PLANTA (floema): móvel — se redistribui para órgãos em crescimento."},
+  {q:"A acidez do solo causa toxidez principalmente por qual elemento?",o:["A) Ferro (Fe)","B) Manganês (Mn)","C) Alumínio (Al³⁺)","D) Zinco (Zn)","E) Hidrogênio (H⁺)"],a:2,e:"Al³⁺ é o principal responsável pela toxidez em solos ácidos. Danifica raízes, impede absorção de P, Ca e Mg. Meta da calagem é eliminar Al³⁺."},
+  {q:"O método da Saturação por Bases para cálculo da calagem usa a fórmula:",o:["A) NC = Al × 2 + (2 – Ca – Mg)","B) NC = (Vf – Va) × CTC / 100","C) NC = pH desejado × CTC","D) NC = MO × 2 × CTC","E) NC = (Al + H) / CTC × 100"],a:1,e:"NC = (Vf – Va) × CTC / 100. Vf = V% desejado, Va = V% atual, CTC = capacidade de troca atual. Resultado em t/ha de calcário PRNT 100%."},
+  {q:"Sobre a disponibilidade de molibdênio (Mo), assinale o CORRETO:",o:["A) Mo disponibilidade cai com aumento de pH","B) Mo é micronutriente metálico como Fe e Zn","C) Mo tem disponibilidade que AUMENTA com o pH","D) Mo não é essencial para leguminosas","E) Mo é imóvel no floema"],a:2,e:"Mo é exceção entre os micros: disponibilidade AUMENTA com pH alto. Deficiência de Mo em solo ácido pode ser corrigida apenas com calagem!"},
+  {q:"O sulfato de potássio (K₂SO₄) é preferido ao KCl para:",o:["A) Soja e milho","B) Cana-de-açúcar","C) Culturas sensíveis ao cloro como tabaco e batata","D) Pastagens","E) Todos os casos, pois é mais eficiente"],a:2,e:"Culturas sensíveis ao Cl (tabaco, batata, algumas frutíferas) se beneficiam do K₂SO₄. O KCl é mais barato e adequado para a maioria das culturas."},
+  {q:"A CTC do solo é calculada como:",o:["A) Ca + Mg + K + Na","B) Ca + Mg + K + H + Al","C) Ca + Mg + P + K","D) N + P + K + Ca + Mg","E) pH + MO + argila"],a:1,e:"CTC = Ca²⁺ + Mg²⁺ + K⁺ + H⁺ + Al³⁺. Inclui todas as bases (Ca, Mg, K) mais a acidez potencial (H+Al). Expressa em cmolc/dm³."},
+  {q:"Sobre o boro (B), assinale a alternativa CORRETA:",o:["A) É móvel no floema, como N e K","B) É imóvel no floema — deficiência aparece nas folhas novas","C) Gosta de pH ácido como Fe e Zn","D) Não é afetado pela matéria orgânica","E) É macronutriente"],a:1,e:"B é imóvel no floema → deficiência surge nas partes jovens. Diferente dos metálicos, B não segue a regra estrita de pH ácido — tem comportamento distinto."},
+  {q:"A fixação biológica de nitrogênio (FBN) é realizada por:",o:["A) Nitrificação por bactérias aeróbias","B) Rhizobium em simbiose com leguminosas","C) Fungos micorrízicos","D) Decomposição da matéria orgânica","E) Reação com adubos nitrogenados"],a:1,e:"Rhizobium (e outros rizóbios) vivem em nódulos nas raízes de leguminosas e fixam N₂ atmosférico → NH₄⁺ disponível. Azospirillum faz FBN em gramíneas."},
+  {q:"O fosfato monoamônico (MAP) contém principalmente:",o:["A) N e K","B) P e K","C) N e P (N: 11%, P₂O₅: 52%)","D) N, P e S","E) P e Ca"],a:2,e:"MAP = Fosfato Monoamônico. Composição: ~11% N + 48–52% P₂O₅. Muito usado no sulco de plantio pela alta concentração de P."},
+  {q:"O superfosfato SIMPLES se diferencia do TRIPLO principalmente por:",o:["A) Ter maior concentração de P₂O₅","B) Ser mais solúvel em água","C) Conter Ca e S além do P","D) Ter menor custo por quilo","E) Ser de origem orgânica"],a:2,e:"Superf.simples: 18–20% P + 20% Ca + 12% S. Superf.triplo: 41–46% P + 14% Ca + ~1% S. O SIMPLES é o único com Ca e S significativos."},
+  {q:"Em solos com alta fixação de fósforo, qual estratégia é mais eficaz?",o:["A) Aplicar P em superfície","B) Diluir a dose em grande área","C) Concentrar o fertilizante no sulco de plantio","D) Usar apenas fosfato natural","E) Nunca fazer adubação fosfatada"],a:2,e:"Concentrar P no sulco de plantio reduz o contato com o solo (menor fixação) e facilita absorção radicular. A diluição em área aumenta o contato e a fixação."},
+  {q:"Qual é a relação ideal de Ca:Mg:K na CTC do solo?",o:["A) 80:10:2%","B) 65:15:5%","C) 50:30:10%","D) 40:40:5%","E) 70:5:5%"],a:1,e:"A relação ideal é Ca:Mg:K = 65:15:5% nas cargas da CTC. Desequilíbrios causam antagonismos — excesso de Ca inibe Mg e K; excesso de K inibe Mg."},
+  {q:"A desnitrificação é o processo em que:",o:["A) NH₄⁺ é oxidado a NO₃⁻","B) NO₃⁻ é convertido a N₂ gasoso (perda)","C) N₂ atmosférico é fixado em NH₄⁺","D) MO é mineralizada liberando NH₄⁺","E) NH₃ é volatilizado"],a:1,e:"Desnitrificação: NO₃⁻ → NO₂⁻ → N₂↑ por bactérias anaeróbias (solo encharcado). Perda gasosa de N. A nitrificação é o processo inverso (NH₄⁺ → NO₃⁻)."},
+  {q:"Para aplicação de calcário, o tempo médio para reação completa no solo é:",o:["A) 1 a 7 dias","B) 15 a 30 dias","C) 60 a 90 dias (incorporado)","D) 6 a 12 meses sem incorporação","E) Reação imediata"],a:2,e:"Calcário incorporado: reação em 60–90 dias. Calcário superficial (plantio direto): pode levar 1–3 anos para atingir maior profundidade. Reação depende do PRNT e umidade."},
+  {q:"A amostragem de solo deve ser feita:",o:["A) Em 1 ponto representativo por fazenda","B) Com 15–20 subamostras por talhão homogêneo","C) Sempre na profundidade de 40–60 cm","D) Apenas após calagem","E) Uma vez a cada 10 anos"],a:1,e:"15–20 subamostras por talhão homogêneo (caminhamento em zigue-zague). Profundidade: 0–20 cm e 20–40 cm. Frequência: a cada 2–3 anos."},
+  {q:"O ferro (Fe) é deficiente principalmente em:",o:["A) Solos ácidos e pobres em matéria orgânica","B) Solos alcalinos (pH > 7) ou calcários","C) Solos arenosos com baixo K","D) Solos com excesso de N","E) Solos com alta MO"],a:1,e:"Fe precipita em pH alto (alcalino) como Fe(OH)₃. Comum em solos calcários ou após calagem excessiva. Quelatos de Fe são a solução para adubação foliar."},
+  {q:"O método correto de coleta de solo para análise em plantio direto é:",o:["A) Apenas na superfície (0–5 cm)","B) Coletar em 0–20 cm misturando toda a camada","C) Coletar em camadas separadas: 0–10 e 10–20 cm","D) Só na entrelinha da cultura","E) Somente na linha de adubação"],a:2,e:"No plantio direto: separar as camadas 0–10 cm e 10–20 cm pois há estratificação de nutrientes e pH. Misturá-las mascara a análise da superfície enriquecida."},
+  {q:"Qual a ordem correta de prioridade no manejo da fertilidade do solo?",o:["A) NPK → Calagem → Micronutrientes","B) Calagem → Gessagem → P corretivo → NPK manutenção → Micros","C) Micronutrientes → Calagem → NPK","D) P → N → K → Calagem","E) A ordem não importa, podem ser feitos simultaneamente"],a:1,e:"Sem corrigir o pH (calagem), a adubação perde grande parte da eficiência. A ordem é: 1º Calagem → 2º Gessagem → 3º P corretivo → 4º NPK manutenção → 5º Micros."},
+];
+
+// ─── NAV ────────────────────────────────────────────────
+function showTab(id,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='flash') renderFC();
+  if(id==='quiz') renderQuiz();
+}
+function showTabByName(id){
+  const btns=document.querySelectorAll('nav button');
+  const ids=['home','teoria','resumo','flash','quiz','tabelas'];
+  showTab(id,btns[ids.indexOf(id)]);
+}
+
+// ─── TEORIA TÓPICOS ──────────────────────────────────────
+function showTopic(id,btn){
+  document.querySelectorAll('.topic-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('topic-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─── FLASHCARDS ──────────────────────────────────────────
+let fcIdx=0,fcFlip=false;
+function renderFC(){
+  fcFlip=false;
+  const c=FC[fcIdx];
+  document.getElementById('fc-label').textContent='Pergunta';
+  document.getElementById('fc-text').textContent=c.f;
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('fc-counter').textContent=`Card ${fcIdx+1} de ${FC.length}`;
+  document.getElementById('fc-progress').style.width=`${((fcIdx+1)/FC.length)*100}%`;
+}
+function flipCard(){
+  fcFlip=!fcFlip;
+  document.getElementById('fc-label').textContent=fcFlip?'Resposta':'Pergunta';
+  document.getElementById('fc-text').textContent=fcFlip?FC[fcIdx].b:FC[fcIdx].f;
+  document.getElementById('flashcard').classList.toggle('flipped',fcFlip);
+}
+function fcNav(d){fcIdx=Math.max(0,Math.min(FC.length-1,fcIdx+d));renderFC();}
+function fcRandom(){fcIdx=Math.floor(Math.random()*FC.length);renderFC();}
+
+// ─── QUIZ ────────────────────────────────────────────────
+let qIdx=0,qScore=0,qSel=null,qWrong=[];
+function renderQuiz(){
+  const area=document.getElementById('quiz-area');
+  if(qIdx>=QS.length){renderResult(area);return;}
+  const q=QS[qIdx];
+  area.innerHTML=`
+    <div class="quiz-hdr">
+      <span style="color:var(--text3)">Questão ${qIdx+1}/${QS.length}</span>
+      <span style="color:var(--green5)">✅ ${qScore} corretas</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:${(qIdx/QS.length)*100}%"></div></div>
+    <div class="quiz-q">${q.q}</div>
+    <div class="quiz-opts">${q.o.map((opt,i)=>`<button class="quiz-opt" id="opt-${i}" onclick="answ(${i})">${opt}</button>`).join('')}</div>
+    <div id="exp" style="display:none" class="quiz-exp"><strong>💡 Explicação:</strong> ${q.e}</div>
+    <button class="btn btn-primary" id="nxt" style="display:none" onclick="nextQ()">${qIdx+1>=QS.length?'Ver Resultado 🏆':'Próxima →'}</button>
+  `;
+}
+function answ(i){
+  if(qSel!==null)return;
+  qSel=i;
+  const q=QS[qIdx];
+  if(i===q.a)qScore++;
+  else qWrong.push(qIdx+1);
+  document.querySelectorAll('.quiz-opt').forEach((b,idx)=>{
+    if(idx===q.a)b.classList.add('correct');
+    else if(idx===i)b.classList.add('wrong');
+    b.onclick=null;
+  });
+  document.getElementById('exp').style.display='block';
+  document.getElementById('nxt').style.display='block';
+}
+function nextQ(){qIdx++;qSel=null;renderQuiz();}
+function renderResult(area){
+  const e=qScore>=28?'🏆':qScore>=24?'🎯':qScore>=18?'📚':'💪';
+  const m=qScore===30?'Perfeito! Dr. em Fertilidade do Solo!':qScore>=24?'Excelente! Você domina o assunto!':qScore>=18?'Bom! Continue revisando os pontos fracos.':'Revise o material e tente novamente!';
+  area.innerHTML=`
+    <div class="result-box">
+      <div style="font-size:56px;margin-bottom:12px">${e}</div>
+      <div class="result-score">${qScore}/30</div>
+      <div style="font-size:13px;color:var(--text3);margin-top:4px">${((qScore/30)*100).toFixed(0)}% de aproveitamento</div>
+      <div class="result-msg" style="margin-top:8px">${m}</div>
+      ${qWrong.length?`<div style="margin-top:14px;font-size:12px;color:var(--gold);text-align:left;padding:10px;background:rgba(255,209,102,0.07);border-radius:8px">❌ Revisar questões: ${qWrong.join(', ')}</div>`:''}
+    </div>
+    <button class="btn btn-primary" onclick="resetQuiz()">🔄 Tentar Novamente</button>
+  `;
+}
+function resetQuiz(){qIdx=0;qScore=0;qSel=null;qWrong=[];renderQuiz();}
+
+// Init
+renderFC();
+renderQuiz();
+</script>
+</body>
+</html>
